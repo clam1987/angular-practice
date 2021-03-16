@@ -33,9 +33,21 @@ export class CustomersListComponent implements OnInit {
     calculateOrders() {
         this.customerOrderTotal = 0;
         this.filteredCustomers.forEach((cust: Customer) => {
-            console.log(cust)
             this.customerOrderTotal += cust.orderTotal || 0;
         });
+    }
+
+    filter(data: string) {
+        if (data) {
+            this.filteredCustomers = this.customers.filter((cust: Customer) => {
+                return cust.name.toLowerCase().indexOf(data.toLowerCase()) > -1 ||
+                       cust.city.toLowerCase().indexOf(data.toLowerCase()) > -1 ||
+                       (cust.orderTotal?.toString().indexOf(data) || "") > -1;
+            });
+        } else {
+            this.filteredCustomers = this.customers;
+        }
+        this.calculateOrders();
     }
 
     sort(props: string) {

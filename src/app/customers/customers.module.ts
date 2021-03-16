@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CustomersComponent } from './customers.component';
 import { CustomersListComponent } from './customers-list/customers-list';
@@ -13,7 +14,8 @@ import { SharedModule } from '../shared/shared.module'
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ],
   exports: [ CustomersComponent ]
 })
